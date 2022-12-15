@@ -3,22 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script>
-        let a = 5, b = 2 ,c = 5,x,x2
-        console.log(d = b*b-4*a*c);
-        if(d==0){
-            console.log(x=-b/(2*a));
+    <style type="text/css">
+        #xx,#yy{
+            padding: 0;
+            margin: 0;
         }
-        if(d>0){
-            x=(-b+src(d))/(2*a)
-            x2=(-b-src(d))/(2*a)
+        #result,#result2,#Name,#Name2 {
+            white-space: pre-line;
+            border-radius: 10px;
+            background-color: white;
+            color: black;width: max-content;
+            margin-left: 40%; margin-bottom: 10px;
         }
-        if(d<0){
-            console.log("Коренів немає");
-        }
-        console.log("Конец работы");
-    </script>
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
 <body>
+
+<div id="Name">Quadratic equation
+    <input id="xx" type="text" />
+    <input id="yy" type="text" />
+</div>
+<div id="result"></div>
+<div id="Name2">Excise goods code</div>
+<div id="result2"></div>
+<script>
+    let a = 5, b = 2 ,c = 5,x,x2,d = b*b-4*a*c
+    let p,p1;
+    p = document.getElementById('result');
+    p.innerHTML = 'a='+a+' b='+b+' c='+c+'\nd='+d;
+    console.log(d);
+    if(d===0){
+        $("#result").append(' x='+(x=-b/(2*a)));
+        console.log(x=-b/(2*a));
+    }
+    if(d>0){
+        x=(-b+src(d))/(2*a)
+        x2=(-b-src(d))/(2*a)
+        $("#result").append(' x='+x+'\nx2='+x2);
+    }
+    if(d<0){
+        $("#result").append('\nNo roots');
+        console.log("No roots");
+    }
+    // /************формування коду акцизних товарів
+    //мільярд+5 букв +6 цифр
+    var randoms = [...Array(10000)].map(() => '\n'+Math.floor(Math.random() * 10000000000)+makeid(4)+makeIdMaker1(5));
+    $("#result2").append('excise stamp'+'\n'+randoms);
+    console.log(result);
+
+     function makeid(length) {
+         var result           = '';
+         var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+         var charactersLength = characters.length;
+         for ( var i = 0; i < length; i++ ) {
+             result += characters.charAt(Math.floor(Math.random() * charactersLength));
+         }
+         return result;
+     }
+    // $("#result2").append('\n'+'series of stamps of excise goods'+'\n'+makeid(4));
+     console.log(makeid(4));
+     function makeIdMaker1(length) {
+         var result           = '';
+         var characters       = '0123456789';
+         var charactersLength = characters.length;
+         for ( var i = 0; i < length; i++ ) {
+             result += characters.charAt(Math.floor(Math.random() * charactersLength));
+         }
+         return result;
+     }
+    // $("#result2").append('\n'+'excise tax stamp number'+'\n'+makeIdMaker1(5));
+     console.log(makeIdMaker1(5));
+    function hasDuplicates(randoms) {
+        return new Set(randoms).size !== randoms.length;
+    }
+    if (hasDuplicates(randoms)) {
+        console.log("Duplicate elements found.");
+        $("#result2").append('\n'+"Duplicate elements found.");
+    }
+    else {
+        console.log("No Duplicates found.");
+        $("#result2").append('\n'+"No Duplicates found.");
+    }
+
+    //  function makeIdMaker2(length) {
+    //      var result           = '';
+    //      var characters       = '0123456789';
+    //      var charactersLength = characters.length;
+    //      for ( var i = 0; i < length; i++ ) {
+    //          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    //      }
+    //      return result;
+    //  }
+
+    // function makeIdMaker3(length) {
+    //     let mass = [6]
+    //     // for(h = 0;h<10)
+    //     return console.log(makeIdMaker2(10)+';');
+    // }
+    // for (ind=0;ind<10;ind++){
+    //     console.log(makeIdMaker3);
+    // }
+</script>
 </body>
 </html>
